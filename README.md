@@ -1,12 +1,12 @@
-# Extract ldsc (LD score regression) log table
+# Extract LD score regression log table
 
 Creates a CSV table from the table in the [LD Score Regression](https://github.com/bulik/ldsc) log output file.
 
 Requirement: Python 3*, Pandas
-* may work with later version of python 2
+* may work with later versions of python 2
 
 
-To run type 'python extract_ldsc_log_table.py -f <path_to_your_log_file>'
+To run type `python extract_ldsc_log_table.py -f <path_to_your_log_file>` into the command line.
 
 Options are:
 
