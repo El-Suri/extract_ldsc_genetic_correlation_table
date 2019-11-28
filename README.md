@@ -8,7 +8,7 @@ To run at the command line type:
 
 Options are:
 
- -f --file      specify path to your log file (mandatory)
+ -f --file      specify path to your log file (required)
 
  -v --verbose   prints processing steps and tables to the command line (optional)
 
