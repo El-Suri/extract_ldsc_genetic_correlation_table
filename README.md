@@ -12,9 +12,10 @@ To run at the command line type:
 
  -v --verbose   prints processing steps and tables to the command line (optional)
 
- -h --help      prints options and description before closing (optional)`
+ -h --help      prints options and description before closing (optional)
+ `
             
 
-Requirements: Python 3*, Pandas
+Requirements: python 3*, pandas
 * may work with later versions of python 2, will work with all the dependencies needed for ldsc anyway.
 
