@@ -2,11 +2,7 @@
 
 Creates a CSV table from the table in the [LD Score Regression](https://github.com/bulik/ldsc) log output file.
 
-Requirement: Python 3*, Pandas
-* may work with later versions of python 2, will work with all the dependeicies needed for ldsc anyway.
-
-
-To run at the command lin type:
+To run at the command line type:
 
 `python extract_ldsc_log_table.py -f <path_to_your_log_file>` 
 
@@ -19,4 +15,6 @@ Options are:
  -h --help      prints options and description before closing (optional)
             
 
+Requirements: Python 3*, Pandas
+* may work with later versions of python 2, will work with all the dependeicies needed for ldsc anyway.
 
