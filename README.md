@@ -1,4 +1,4 @@
-# Extract LD score regression log table
+# Extract LD score regression log table `v1.0.1`
 
 Creates a CSV table from the table in the [LD Score Regression](https://github.com/bulik/ldsc) log output file.
 
