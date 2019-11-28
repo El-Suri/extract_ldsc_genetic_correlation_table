@@ -1,19 +1,31 @@
 import os
 import sys
 import pandas as pd
-
+import argparse
 
 def cmd_line_args():
-    arguments = len(sys.argv) - 1
-    if arguments != 1:
-        raise Exception('Please provide one argument to the script. This should be the path to .log file')
+    parser = argparse.ArgumentParser(description='Extract the table from the log files from LD score regression')
+    parser.add_argument("-f","--file", type=str, required = True, help="Path to ldsc .log file")
+    parser.add_argument("-v","--verbose",action="store_true", help="Optional verbose argument, if given prints table to the command line.")
 
-    my_file = sys.argv[1]
-    return my_file
+    args = parser.parse_args()
+    my_file = args.file
+    verbose = args.verbose
+    print(my_file, verbose)
+    return(my_file, verbose)
+
+
+#def cmd_line_args():
+#    arguments = len(sys.argv) - 1
+#    if arguments != 1:
+#        raise Exception('Please provide one argument to the script. This should be the path to .log file')
+#
+#    my_file = sys.argv[1]
+#    return my_file
 
 
 
-def extract_ldsc_log_table(my_file):
+def extract_ldsc_log_table(my_file,verbose):
 
     try:
         with open(my_file) as infile:
@@ -25,8 +37,9 @@ def extract_ldsc_log_table(my_file):
     tables_lines = [] # empty dataframe where we'll identify where the table part starts
     linenum = 0 # start linenum at zero, used as a counter
     substr = "Summary of Genetic Correlation Results".lower()  # Part of text where table begins
-
+    
     print('Reading log file')
+    
     with open (my_file,'rt') as myfile:
         for count, line in enumerate(myfile):
             linenum += 1
@@ -45,15 +58,18 @@ def extract_ldsc_log_table(my_file):
     #print('Printing first line of data: ' + str(new_list[2])) 
 
     my_table = pd.DataFrame(new_list[2:], columns = columns) # Import data (from line 2 onwards) and columns
-    print('Creating table')
-
-    #print(my_table) 
+    if verbose:
+        print('Creating table')
+        print(my_table) 
 
     # You can see that the last 3 rows are not wanted, so we should remove these
 
-    #print('Dropping unecessary last 3 rows (double check you have the correct number of rows)')
+        print('Dropping unecessary last 3 rows (double check you have the correct number of rows)')
+    
+    
     my_table.drop(my_table.tail(3).index, inplace = True)
-    #print(my_table)
+    if verbose:
+        print(my_table)
 
     #output_file = input("Please specify the name of your new table file: ")
     output_file = my_file + '_table.csv'
@@ -65,5 +81,5 @@ def extract_ldsc_log_table(my_file):
 
 
 if __name__ == "__main__":
-    my_file = cmd_line_args()
-    extract_ldsc_log_table(my_file)
+    my_file, verbose = cmd_line_args()
+    extract_ldsc_log_table(my_file,verbose)
