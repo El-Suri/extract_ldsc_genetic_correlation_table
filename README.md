@@ -1,6 +1,18 @@
 # extract_ldsc_log_table
 
-Creates a CSV table from the table in the LD Score Regression .log output file. 
-Simply run at the command line using 'python extract_ldsc_log_table.py <path_to_log_file>'.
+Creates a CSV table from the table in the LD Score Regression .log output file.
 
-Note: requires the pandas package
+Requirement: Python 3*, Pandas
+* may work with later version of python 2
+
+
+To run type 'python extract_ldsc_log_table.py -f <path_to_your_log_file>'
+
+Options are:
+
+ -f --file      specify path to your log file (mandatory)
+ -v --verbose   prints processing steps and tables to the command line (optional)
+ -h --help      prints options and description before closing (optional)
+            
+
+
