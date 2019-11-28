@@ -10,7 +10,7 @@ Options are:
 
  -f --file      specify path to your log file (required)
 
- -v --verbose   prints processing steps and tables to the command line (optional)
+ -v --verbose   prints table to the command line (optional)
 
  -h --help      prints options and description before closing (optional)
              
