@@ -15,18 +15,11 @@ def cmd_line_args():
     return(my_file, verbose)
 
 
-#def cmd_line_args():
-#    arguments = len(sys.argv) - 1
-#    if arguments != 1:
-#        raise Exception('Please provide one argument to the script. This should be the path to .log file')
-#
-#    my_file = sys.argv[1]
-#    return my_file
-
-
 
 def extract_ldsc_log_table(my_file,verbose):
-
+    ''' Extracts the table from the ldsc log file. Requires two arguments: my_file
+which is a path to the log file, and verbose, which is a boolean True or
+None'''
     try:
         with open(my_file) as infile:
             pass
@@ -58,17 +51,18 @@ def extract_ldsc_log_table(my_file,verbose):
     #print('Printing first line of data: ' + str(new_list[2])) 
 
     my_table = pd.DataFrame(new_list[2:], columns = columns) # Import data (from line 2 onwards) and columns
-    if verbose:
-        print('Creating table')
-        print(my_table) 
+   # if verbose:
+   #     print('Creating table')
+   #     print(my_table) 
 
     # You can see that the last 3 rows are not wanted, so we should remove these
 
-        print('Dropping unecessary last 3 rows (double check you have the correct number of rows)')
+   #     print('Dropping unecessary last 3 rows (double check you have the correct number of rows)')
     
     
     my_table.drop(my_table.tail(3).index, inplace = True)
     if verbose:
+        print('Printing table')
         print(my_table)
 
     #output_file = input("Please specify the name of your new table file: ")
