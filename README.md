@@ -14,7 +14,3 @@ Options are:
 
  -h --help      prints options and description before closing (optional)
              
-
-Requirements: python 3*, pandas
-\* may work with later versions of python 2, will work with all the dependencies needed for ldsc anyway.
-
