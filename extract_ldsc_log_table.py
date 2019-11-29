@@ -7,16 +7,18 @@ def cmd_line_args():
     parser = argparse.ArgumentParser(description='Extract the table from the log files from LD score regression')
     parser.add_argument("-f","--file", type=str, required = True, help="Path to ldsc .log file")
     parser.add_argument("-v","--verbose",action="store_true", help="Optional verbose argument, if given prints table to the command line.")
+    parser.add_argument("-o","--output",type=str, required = False, help="Optional, specify output file name. Default is input file plus _table.csv")
 
     args = parser.parse_args()
     my_file = args.file
     verbose = args.verbose
+    output_file = args.output
     print(my_file, verbose)
-    return(my_file, verbose)
+    return(my_file, verbose,output_file)
 
 
 
-def extract_ldsc_log_table(my_file,verbose):
+def extract_ldsc_log_table(my_file,verbose, output_file):
     ''' Extracts the table from the ldsc log file. Requires two arguments: my_file
 which is a path to the log file, and verbose, which is a boolean True or
 None'''
@@ -66,14 +68,17 @@ None'''
         print(my_table)
 
     #output_file = input("Please specify the name of your new table file: ")
-    output_file = my_file + '_table.csv'
+    if output_file:
+        my_table.to_csv(output_file, index = None) # save table as csv
+    else:
+        output_file = my_file + '_table.csv'
+        my_table.to_csv(output_file, index = None) # save table as csv
 
-    my_table.to_csv(output_file, index = None) # save table as csv
-
+    
     print('Table saved as ' + output_file)
 
 
 
 if __name__ == "__main__":
-    my_file, verbose = cmd_line_args()
-    extract_ldsc_log_table(my_file,verbose)
+    my_file, verbose, output_file = cmd_line_args()
+    extract_ldsc_log_table(my_file,verbose, output_file)
