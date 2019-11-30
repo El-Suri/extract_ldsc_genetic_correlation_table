@@ -17,6 +17,8 @@ Options are:
 
  -h --help      prints options and description before closing (optional)
  
+ -o --output    specify output file name, default is the input file name plus _table.csv (optional)
+ 
  
  ### What do I need?
  
