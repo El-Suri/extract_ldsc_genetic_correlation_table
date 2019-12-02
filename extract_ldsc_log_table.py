@@ -2,6 +2,7 @@ import os
 import sys
 import pandas as pd
 import argparse
+from tqdm import tqdm
 
 def cmd_line_args():
     parser = argparse.ArgumentParser(description='Extract the table from the log files from LD score regression')
@@ -36,7 +37,7 @@ None'''
     print('Reading log file')
     
     with open (my_file,'rt') as myfile:
-        for count, line in enumerate(myfile):
+        for line in tqdm(myfile, total=get_num_lines(my_file)):
             linenum += 1
             content_list.append(line.rstrip('\n')) #take out the line breaks
             if line.lower().find(substr) != -1: #when you find the substring, create some text that tells us where it is
@@ -76,6 +77,18 @@ None'''
 
     
     print('Table saved as ' + output_file)
+
+
+# For progress bar
+import mmap
+
+def get_num_lines(my_file):
+    fp = open(my_file, "r+")
+    buf = mmap.mmap(fp.fileno(), 0)
+    lines = 0
+    while buf.readline():
+        lines += 1
+    return lines
 
 
 
