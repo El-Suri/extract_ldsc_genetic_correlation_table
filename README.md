@@ -2,7 +2,7 @@
 
 
 ### What does it do?
-Creates a CSV table from the table in the [LD Score Regression](https://github.com/bulik/ldsc) log output file.
+Creates a CSV table from the table in the [LD Score Regression](https://github.com/bulik/ldsc) geenetic correlation log output file.
 
 ### How do I do it?
 To run at the command line type:
