@@ -1,4 +1,4 @@
-# Extract LD score regression log table `v1.0.1`
+# Extract LD score regression genetic correlation log table `v1.0.1`
 
 
 ### What does it do?
