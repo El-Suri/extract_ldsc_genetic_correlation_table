@@ -22,7 +22,7 @@ Options are:
  
  ### What do I need?
  
- * python3 (untested on python2)
+ * python3 
  * pandas package
  * LDSC log output 
              
